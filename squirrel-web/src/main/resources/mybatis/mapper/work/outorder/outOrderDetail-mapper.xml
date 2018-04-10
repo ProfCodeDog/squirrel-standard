@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.squirrel.dao.work.outorder.IOutOrderDetailDao">
+  <resultMap id="BaseResultMap" type="com.squirrel.entity.work.outorder.OutOrderDetailEntity">
+    <id column="ID" jdbcType="BIGINT" property="id" javaType="long" typeHandler="org.apache.ibatis.type.LongTypeHandler" />
+    <result column="VERSION" jdbcType="INTEGER" property="version" javaType="int" typeHandler="org.apache.ibatis.type.IntegerTypeHandler" />
+    <result column="OUTORDER_CODE" jdbcType="VARCHAR" property="outorderCode" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="ITEM_CODE" jdbcType="VARCHAR" property="itemCode" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="PAC_CODE" jdbcType="VARCHAR" property="pacCode" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="QUANTITY" jdbcType="BIGINT" property="quantity" javaType="long" typeHandler="org.apache.ibatis.type.LongTypeHandler" />
+    <result column="SUPLIER_CODE" jdbcType="VARCHAR" property="suplierCode" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="ITEM_QUALITY" jdbcType="VARCHAR" property="itemQuality" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="REMARKS" jdbcType="VARCHAR" property="remarks" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="CREATOR" jdbcType="VARCHAR" property="creator" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" javaType="java.sql.Timestamp" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+    <result column="LAST_OPERATOR" jdbcType="VARCHAR" property="lastOperator" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" javaType="java.sql.Timestamp" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, VERSION, OUTORDER_CODE, ITEM_CODE, PAC_CODE, QUANTITY, SUPLIER_CODE, ITEM_QUALITY, 
+    REMARKS, CREATOR, CREATE_TIME, LAST_OPERATOR, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TB_OUTORDER_DETAIL
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="long">
+    delete from TB_OUTORDER_DETAIL
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.squirrel.entity.work.outorder.OutOrderDetailEntity">
+    <selectKey resultType="org.apache.ibatis.type.LongTypeHandler" order="BEFORE" keyProperty="id">
+        SELECT SEQ_OUTORDER_DETAIL.NEXTVAL FROM DUAL 
+    </selectKey>
+    insert into TB_OUTORDER_DETAIL (ID, VERSION, OUTORDER_CODE, 
+      ITEM_CODE, PAC_CODE, QUANTITY, 
+      SUPLIER_CODE, ITEM_QUALITY, REMARKS, 
+      CREATOR, CREATE_TIME, LAST_OPERATOR, 
+      UPDATE_TIME)
+    values (#{id,jdbcType=BIGINT}, #{version,jdbcType=INTEGER}, #{outorderCode,jdbcType=VARCHAR}, 
+      #{itemCode,jdbcType=VARCHAR}, #{pacCode,jdbcType=VARCHAR}, #{quantity,jdbcType=BIGINT}, 
+      #{suplierCode,jdbcType=VARCHAR}, #{itemQuality,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastOperator,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.squirrel.entity.work.outorder.OutOrderDetailEntity">
+    <selectKey resultType="org.apache.ibatis.type.LongTypeHandler" order="BEFORE" keyProperty="id">
+        SELECT SEQ_OUTORDER_DETAIL.NEXTVAL FROM DUAL 
+    </selectKey>
+    insert into TB_OUTORDER_DETAIL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+      <if test="outorderCode != null">
+        OUTORDER_CODE,
+      </if>
+      <if test="itemCode != null">
+        ITEM_CODE,
+      </if>
+      <if test="pacCode != null">
+        PAC_CODE,
+      </if>
+      <if test="quantity != null">
+        QUANTITY,
+      </if>
+      <if test="suplierCode != null">
+        SUPLIER_CODE,
+      </if>
+      <if test="itemQuality != null">
+        ITEM_QUALITY,
+      </if>
+      <if test="remarks != null">
+        REMARKS,
+      </if>
+      <if test="creator != null">
+        CREATOR,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="lastOperator != null">
+        LAST_OPERATOR,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="outorderCode != null">
+        #{outorderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pacCode != null">
+        #{pacCode,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=BIGINT},
+      </if>
+      <if test="suplierCode != null">
+        #{suplierCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemQuality != null">
+        #{itemQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastOperator != null">
+        #{lastOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.squirrel.entity.work.outorder.OutOrderDetailEntity">
+    update TB_OUTORDER_DETAIL
+    <set>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="outorderCode != null">
+        OUTORDER_CODE = #{outorderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        ITEM_CODE = #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pacCode != null">
+        PAC_CODE = #{pacCode,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null">
+        QUANTITY = #{quantity,jdbcType=BIGINT},
+      </if>
+      <if test="suplierCode != null">
+        SUPLIER_CODE = #{suplierCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemQuality != null">
+        ITEM_QUALITY = #{itemQuality,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        REMARKS = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        CREATOR = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastOperator != null">
+        LAST_OPERATOR = #{lastOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.squirrel.entity.work.outorder.OutOrderDetailEntity">
+    update TB_OUTORDER_DETAIL
+    set VERSION = #{version,jdbcType=INTEGER},
+      OUTORDER_CODE = #{outorderCode,jdbcType=VARCHAR},
+      ITEM_CODE = #{itemCode,jdbcType=VARCHAR},
+      PAC_CODE = #{pacCode,jdbcType=VARCHAR},
+      QUANTITY = #{quantity,jdbcType=BIGINT},
+      SUPLIER_CODE = #{suplierCode,jdbcType=VARCHAR},
+      ITEM_QUALITY = #{itemQuality,jdbcType=VARCHAR},
+      REMARKS = #{remarks,jdbcType=VARCHAR},
+      CREATOR = #{creator,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      LAST_OPERATOR = #{lastOperator,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

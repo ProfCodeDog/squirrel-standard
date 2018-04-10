@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.squirrel.dao.work.outorder.IOutOrderDao">
+  <resultMap id="BaseResultMap" type="com.squirrel.entity.work.outorder.OutOrderEntity">
+    <id column="ID" jdbcType="BIGINT" property="id" javaType="long" typeHandler="org.apache.ibatis.type.LongTypeHandler" />
+    <result column="VERSION" jdbcType="INTEGER" property="version" javaType="int" typeHandler="org.apache.ibatis.type.IntegerTypeHandler" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="COMPANY_CODE" jdbcType="VARCHAR" property="companyCode" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="CARRIER_CODE" jdbcType="VARCHAR" property="carrierCode" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="COMPANY_BILL_CODE" jdbcType="VARCHAR" property="companyBillCode" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="SOURCE_CHANNEL_CODE" jdbcType="VARCHAR" property="sourceChannelCode" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="BILL_SOURCE_CHANNEL" jdbcType="VARCHAR" property="billSourceChannel" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="WAYBILL_CODE" jdbcType="VARCHAR" property="waybillCode" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="BILL_TYPE" jdbcType="VARCHAR" property="billType" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="ORDER_DATE" jdbcType="TIMESTAMP" property="orderDate" javaType="java.sql.Timestamp" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+    <result column="ESTIMATE_DATE" jdbcType="TIMESTAMP" property="estimateDate" javaType="java.sql.Timestamp" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+    <result column="START_RECEIVED_DATE" jdbcType="TIMESTAMP" property="startReceivedDate" javaType="java.sql.Timestamp" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+    <result column="END_RECEIVED_DATE" jdbcType="TIMESTAMP" property="endReceivedDate" javaType="java.sql.Timestamp" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+    <result column="SHIP_NAME" jdbcType="VARCHAR" property="shipName" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="SHIP_COUNTRY" jdbcType="VARCHAR" property="shipCountry" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="SHIP_PROVINCE" jdbcType="VARCHAR" property="shipProvince" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="SHIP_CITY" jdbcType="VARCHAR" property="shipCity" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="SHIP_AREA" jdbcType="VARCHAR" property="shipArea" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="SHIP_ADDRESS" jdbcType="VARCHAR" property="shipAddress" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="SHIP_POSTCODE" jdbcType="VARCHAR" property="shipPostcode" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="SHIP_TELEPHONE" jdbcType="VARCHAR" property="shipTelephone" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="SHIP_MOBILE" jdbcType="VARCHAR" property="shipMobile" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="SHIP_EMAIL" jdbcType="VARCHAR" property="shipEmail" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="RECEIVE_NAME" jdbcType="VARCHAR" property="receiveName" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="RECEIVE_COUNTRY" jdbcType="VARCHAR" property="receiveCountry" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="RECEIVE_PROVINCE" jdbcType="VARCHAR" property="receiveProvince" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="RECEIVE_CITY" jdbcType="VARCHAR" property="receiveCity" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="RECEIVE_AREA" jdbcType="VARCHAR" property="receiveArea" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="RECEIVE_ADDRESS" jdbcType="VARCHAR" property="receiveAddress" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="RECEIVE_POSTCODE" jdbcType="VARCHAR" property="receivePostcode" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="RECEIVE_TELEPHONE" jdbcType="VARCHAR" property="receiveTelephone" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="RECEIVE_MOBILE" jdbcType="VARCHAR" property="receiveMobile" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="RECEIVE_EMAIL" jdbcType="VARCHAR" property="receiveEmail" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="REMARKS" jdbcType="VARCHAR" property="remarks" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="CREATOR" jdbcType="VARCHAR" property="creator" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" javaType="java.sql.Timestamp" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+    <result column="LAST_OPERATOR" jdbcType="VARCHAR" property="lastOperator" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" javaType="java.sql.Timestamp" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, VERSION, STATUS, COMPANY_CODE, CARRIER_CODE, CODE, COMPANY_BILL_CODE, SOURCE_CHANNEL_CODE, 
+    BILL_SOURCE_CHANNEL, WAYBILL_CODE, BILL_TYPE, ORDER_DATE, ESTIMATE_DATE, START_RECEIVED_DATE, 
+    END_RECEIVED_DATE, SHIP_NAME, SHIP_COUNTRY, SHIP_PROVINCE, SHIP_CITY, SHIP_AREA, 
+    SHIP_ADDRESS, SHIP_POSTCODE, SHIP_TELEPHONE, SHIP_MOBILE, SHIP_EMAIL, RECEIVE_NAME, 
+    RECEIVE_COUNTRY, RECEIVE_PROVINCE, RECEIVE_CITY, RECEIVE_AREA, RECEIVE_ADDRESS, RECEIVE_POSTCODE, 
+    RECEIVE_TELEPHONE, RECEIVE_MOBILE, RECEIVE_EMAIL, REMARKS, CREATOR, CREATE_TIME, 
+    LAST_OPERATOR, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TB_OUTORDER
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="long">
+    delete from TB_OUTORDER
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.squirrel.entity.work.outorder.OutOrderEntity">
+    <selectKey resultType="org.apache.ibatis.type.LongTypeHandler" order="BEFORE" keyProperty="id">
+        SELECT SEQ_OUTORDER.NEXTVAL FROM DUAL 
+    </selectKey>
+    insert into TB_OUTORDER (ID, VERSION, STATUS, 
+      COMPANY_CODE, CARRIER_CODE, CODE, 
+      COMPANY_BILL_CODE, SOURCE_CHANNEL_CODE, BILL_SOURCE_CHANNEL, 
+      WAYBILL_CODE, BILL_TYPE, ORDER_DATE, 
+      ESTIMATE_DATE, START_RECEIVED_DATE, END_RECEIVED_DATE, 
+      SHIP_NAME, SHIP_COUNTRY, SHIP_PROVINCE, 
+      SHIP_CITY, SHIP_AREA, SHIP_ADDRESS, 
+      SHIP_POSTCODE, SHIP_TELEPHONE, SHIP_MOBILE, 
+      SHIP_EMAIL, RECEIVE_NAME, RECEIVE_COUNTRY, 
+      RECEIVE_PROVINCE, RECEIVE_CITY, RECEIVE_AREA, 
+      RECEIVE_ADDRESS, RECEIVE_POSTCODE, RECEIVE_TELEPHONE, 
+      RECEIVE_MOBILE, RECEIVE_EMAIL, REMARKS, 
+      CREATOR, CREATE_TIME, LAST_OPERATOR, 
+      UPDATE_TIME)
+    values (#{id,jdbcType=BIGINT}, #{version,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, 
+      #{companyCode,jdbcType=VARCHAR}, #{carrierCode,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{companyBillCode,jdbcType=VARCHAR}, #{sourceChannelCode,jdbcType=VARCHAR}, #{billSourceChannel,jdbcType=VARCHAR}, 
+      #{waybillCode,jdbcType=VARCHAR}, #{billType,jdbcType=VARCHAR}, #{orderDate,jdbcType=TIMESTAMP}, 
+      #{estimateDate,jdbcType=TIMESTAMP}, #{startReceivedDate,jdbcType=TIMESTAMP}, #{endReceivedDate,jdbcType=TIMESTAMP}, 
+      #{shipName,jdbcType=VARCHAR}, #{shipCountry,jdbcType=VARCHAR}, #{shipProvince,jdbcType=VARCHAR}, 
+      #{shipCity,jdbcType=VARCHAR}, #{shipArea,jdbcType=VARCHAR}, #{shipAddress,jdbcType=VARCHAR}, 
+      #{shipPostcode,jdbcType=VARCHAR}, #{shipTelephone,jdbcType=VARCHAR}, #{shipMobile,jdbcType=VARCHAR}, 
+      #{shipEmail,jdbcType=VARCHAR}, #{receiveName,jdbcType=VARCHAR}, #{receiveCountry,jdbcType=VARCHAR}, 
+      #{receiveProvince,jdbcType=VARCHAR}, #{receiveCity,jdbcType=VARCHAR}, #{receiveArea,jdbcType=VARCHAR}, 
+      #{receiveAddress,jdbcType=VARCHAR}, #{receivePostcode,jdbcType=VARCHAR}, #{receiveTelephone,jdbcType=VARCHAR}, 
+      #{receiveMobile,jdbcType=VARCHAR}, #{receiveEmail,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{lastOperator,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.squirrel.entity.work.outorder.OutOrderEntity">
+    <selectKey resultType="org.apache.ibatis.type.LongTypeHandler" order="BEFORE" keyProperty="id">
+        SELECT SEQ_OUTORDER.NEXTVAL FROM DUAL 
+    </selectKey>
+    insert into TB_OUTORDER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="companyCode != null">
+        COMPANY_CODE,
+      </if>
+      <if test="carrierCode != null">
+        CARRIER_CODE,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+      <if test="companyBillCode != null">
+        COMPANY_BILL_CODE,
+      </if>
+      <if test="sourceChannelCode != null">
+        SOURCE_CHANNEL_CODE,
+      </if>
+      <if test="billSourceChannel != null">
+        BILL_SOURCE_CHANNEL,
+      </if>
+      <if test="waybillCode != null">
+        WAYBILL_CODE,
+      </if>
+      <if test="billType != null">
+        BILL_TYPE,
+      </if>
+      <if test="orderDate != null">
+        ORDER_DATE,
+      </if>
+      <if test="estimateDate != null">
+        ESTIMATE_DATE,
+      </if>
+      <if test="startReceivedDate != null">
+        START_RECEIVED_DATE,
+      </if>
+      <if test="endReceivedDate != null">
+        END_RECEIVED_DATE,
+      </if>
+      <if test="shipName != null">
+        SHIP_NAME,
+      </if>
+      <if test="shipCountry != null">
+        SHIP_COUNTRY,
+      </if>
+      <if test="shipProvince != null">
+        SHIP_PROVINCE,
+      </if>
+      <if test="shipCity != null">
+        SHIP_CITY,
+      </if>
+      <if test="shipArea != null">
+        SHIP_AREA,
+      </if>
+      <if test="shipAddress != null">
+        SHIP_ADDRESS,
+      </if>
+      <if test="shipPostcode != null">
+        SHIP_POSTCODE,
+      </if>
+      <if test="shipTelephone != null">
+        SHIP_TELEPHONE,
+      </if>
+      <if test="shipMobile != null">
+        SHIP_MOBILE,
+      </if>
+      <if test="shipEmail != null">
+        SHIP_EMAIL,
+      </if>
+      <if test="receiveName != null">
+        RECEIVE_NAME,
+      </if>
+      <if test="receiveCountry != null">
+        RECEIVE_COUNTRY,
+      </if>
+      <if test="receiveProvince != null">
+        RECEIVE_PROVINCE,
+      </if>
+      <if test="receiveCity != null">
+        RECEIVE_CITY,
+      </if>
+      <if test="receiveArea != null">
+        RECEIVE_AREA,
+      </if>
+      <if test="receiveAddress != null">
+        RECEIVE_ADDRESS,
+      </if>
+      <if test="receivePostcode != null">
+        RECEIVE_POSTCODE,
+      </if>
+      <if test="receiveTelephone != null">
+        RECEIVE_TELEPHONE,
+      </if>
+      <if test="receiveMobile != null">
+        RECEIVE_MOBILE,
+      </if>
+      <if test="receiveEmail != null">
+        RECEIVE_EMAIL,
+      </if>
+      <if test="remarks != null">
+        REMARKS,
+      </if>
+      <if test="creator != null">
+        CREATOR,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="lastOperator != null">
+        LAST_OPERATOR,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="carrierCode != null">
+        #{carrierCode,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="companyBillCode != null">
+        #{companyBillCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceChannelCode != null">
+        #{sourceChannelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billSourceChannel != null">
+        #{billSourceChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillCode != null">
+        #{waybillCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billType != null">
+        #{billType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null">
+        #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="estimateDate != null">
+        #{estimateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startReceivedDate != null">
+        #{startReceivedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endReceivedDate != null">
+        #{endReceivedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shipName != null">
+        #{shipName,jdbcType=VARCHAR},
+      </if>
+      <if test="shipCountry != null">
+        #{shipCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="shipProvince != null">
+        #{shipProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="shipCity != null">
+        #{shipCity,jdbcType=VARCHAR},
+      </if>
+      <if test="shipArea != null">
+        #{shipArea,jdbcType=VARCHAR},
+      </if>
+      <if test="shipAddress != null">
+        #{shipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="shipPostcode != null">
+        #{shipPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="shipTelephone != null">
+        #{shipTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="shipMobile != null">
+        #{shipMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="shipEmail != null">
+        #{shipEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveName != null">
+        #{receiveName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveCountry != null">
+        #{receiveCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveProvince != null">
+        #{receiveProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveCity != null">
+        #{receiveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveArea != null">
+        #{receiveArea,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAddress != null">
+        #{receiveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="receivePostcode != null">
+        #{receivePostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveTelephone != null">
+        #{receiveTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveMobile != null">
+        #{receiveMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveEmail != null">
+        #{receiveEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastOperator != null">
+        #{lastOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.squirrel.entity.work.outorder.OutOrderEntity">
+    update TB_OUTORDER
+    <set>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="carrierCode != null">
+        CARRIER_CODE = #{carrierCode,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        CODE = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="companyBillCode != null">
+        COMPANY_BILL_CODE = #{companyBillCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceChannelCode != null">
+        SOURCE_CHANNEL_CODE = #{sourceChannelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billSourceChannel != null">
+        BILL_SOURCE_CHANNEL = #{billSourceChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillCode != null">
+        WAYBILL_CODE = #{waybillCode,jdbcType=VARCHAR},
+      </if>
+      <if test="billType != null">
+        BILL_TYPE = #{billType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null">
+        ORDER_DATE = #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="estimateDate != null">
+        ESTIMATE_DATE = #{estimateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startReceivedDate != null">
+        START_RECEIVED_DATE = #{startReceivedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endReceivedDate != null">
+        END_RECEIVED_DATE = #{endReceivedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shipName != null">
+        SHIP_NAME = #{shipName,jdbcType=VARCHAR},
+      </if>
+      <if test="shipCountry != null">
+        SHIP_COUNTRY = #{shipCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="shipProvince != null">
+        SHIP_PROVINCE = #{shipProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="shipCity != null">
+        SHIP_CITY = #{shipCity,jdbcType=VARCHAR},
+      </if>
+      <if test="shipArea != null">
+        SHIP_AREA = #{shipArea,jdbcType=VARCHAR},
+      </if>
+      <if test="shipAddress != null">
+        SHIP_ADDRESS = #{shipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="shipPostcode != null">
+        SHIP_POSTCODE = #{shipPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="shipTelephone != null">
+        SHIP_TELEPHONE = #{shipTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="shipMobile != null">
+        SHIP_MOBILE = #{shipMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="shipEmail != null">
+        SHIP_EMAIL = #{shipEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveName != null">
+        RECEIVE_NAME = #{receiveName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveCountry != null">
+        RECEIVE_COUNTRY = #{receiveCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveProvince != null">
+        RECEIVE_PROVINCE = #{receiveProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveCity != null">
+        RECEIVE_CITY = #{receiveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveArea != null">
+        RECEIVE_AREA = #{receiveArea,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveAddress != null">
+        RECEIVE_ADDRESS = #{receiveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="receivePostcode != null">
+        RECEIVE_POSTCODE = #{receivePostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveTelephone != null">
+        RECEIVE_TELEPHONE = #{receiveTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveMobile != null">
+        RECEIVE_MOBILE = #{receiveMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveEmail != null">
+        RECEIVE_EMAIL = #{receiveEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        REMARKS = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        CREATOR = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastOperator != null">
+        LAST_OPERATOR = #{lastOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.squirrel.entity.work.outorder.OutOrderEntity">
+    update TB_OUTORDER
+    set VERSION = #{version,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=VARCHAR},
+      COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+      CARRIER_CODE = #{carrierCode,jdbcType=VARCHAR},
+      CODE = #{code,jdbcType=VARCHAR},
+      COMPANY_BILL_CODE = #{companyBillCode,jdbcType=VARCHAR},
+      SOURCE_CHANNEL_CODE = #{sourceChannelCode,jdbcType=VARCHAR},
+      BILL_SOURCE_CHANNEL = #{billSourceChannel,jdbcType=VARCHAR},
+      WAYBILL_CODE = #{waybillCode,jdbcType=VARCHAR},
+      BILL_TYPE = #{billType,jdbcType=VARCHAR},
+      ORDER_DATE = #{orderDate,jdbcType=TIMESTAMP},
+      ESTIMATE_DATE = #{estimateDate,jdbcType=TIMESTAMP},
+      START_RECEIVED_DATE = #{startReceivedDate,jdbcType=TIMESTAMP},
+      END_RECEIVED_DATE = #{endReceivedDate,jdbcType=TIMESTAMP},
+      SHIP_NAME = #{shipName,jdbcType=VARCHAR},
+      SHIP_COUNTRY = #{shipCountry,jdbcType=VARCHAR},
+      SHIP_PROVINCE = #{shipProvince,jdbcType=VARCHAR},
+      SHIP_CITY = #{shipCity,jdbcType=VARCHAR},
+      SHIP_AREA = #{shipArea,jdbcType=VARCHAR},
+      SHIP_ADDRESS = #{shipAddress,jdbcType=VARCHAR},
+      SHIP_POSTCODE = #{shipPostcode,jdbcType=VARCHAR},
+      SHIP_TELEPHONE = #{shipTelephone,jdbcType=VARCHAR},
+      SHIP_MOBILE = #{shipMobile,jdbcType=VARCHAR},
+      SHIP_EMAIL = #{shipEmail,jdbcType=VARCHAR},
+      RECEIVE_NAME = #{receiveName,jdbcType=VARCHAR},
+      RECEIVE_COUNTRY = #{receiveCountry,jdbcType=VARCHAR},
+      RECEIVE_PROVINCE = #{receiveProvince,jdbcType=VARCHAR},
+      RECEIVE_CITY = #{receiveCity,jdbcType=VARCHAR},
+      RECEIVE_AREA = #{receiveArea,jdbcType=VARCHAR},
+      RECEIVE_ADDRESS = #{receiveAddress,jdbcType=VARCHAR},
+      RECEIVE_POSTCODE = #{receivePostcode,jdbcType=VARCHAR},
+      RECEIVE_TELEPHONE = #{receiveTelephone,jdbcType=VARCHAR},
+      RECEIVE_MOBILE = #{receiveMobile,jdbcType=VARCHAR},
+      RECEIVE_EMAIL = #{receiveEmail,jdbcType=VARCHAR},
+      REMARKS = #{remarks,jdbcType=VARCHAR},
+      CREATOR = #{creator,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      LAST_OPERATOR = #{lastOperator,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

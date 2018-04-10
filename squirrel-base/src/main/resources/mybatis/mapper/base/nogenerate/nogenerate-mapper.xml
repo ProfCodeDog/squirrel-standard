@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.squirrel.dao.base.nogenerate.INoGenerateDao">
+	<resultMap id="BaseResultMap" type="com.squirrel.entity.base.nogenerate.NoGenerateEntity">
+		<id column="id" jdbcType="BIGINT" property="id" javaType="long" typeHandler="org.apache.ibatis.type.LongTypeHandler" />
+		<result column="gen_date" jdbcType="VARCHAR" property="genDate" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="serial_no" jdbcType="INTEGER" property="serialNo" javaType="int" typeHandler="org.apache.ibatis.type.IntegerTypeHandler" />
+		<result column="bill_type" jdbcType="VARCHAR" property="billType" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+	</resultMap>
+	<insert id="insert" parameterType="String">
+		insert into TB_NO_GENERATE (id,gen_date,serial_no,bill_type) values (SEQ_NO_GENERATE.nextval,to_char(sysdate,'yyyymmdd'),0,#{billType,jdbcType=VARCHAR})
+	</insert>
+	<delete id="deleteByPrimaryKey" parameterType="long"> delete from TB_NO_GENERATE where id=#{id,jdbcType=BIGINT} </delete>
+	
+	<delete id="deleteYesterdayData"  parameterType="String"> delete from TB_NO_GENERATE where bill_type=#{billType,jdbcType=VARCHAR} and gen_date=to_char(sysdate-1,'yyyymmdd',1,#{billType,jdbcType=VARCHAR} </delete>
+	
+	<update id="updateByPrimaryKey" parameterType="com.squirrel.entity.base.nogenerate.NoGenerateEntity">
+		update TB_NO_GENERATE set gen_date=to_char(sysdate,'yyyymmdd'),serial_no=serial_no+1 where id=#{id,jdbcType=BIGINT} and serial_no =#{serialNo,jdbcType=INTEGER}
+	</update>
+	<select id="selectByPrimaryKey" parameterType="long" resultMap="BaseResultMap">
+		select id,to_char(sysdate,'yyyymmdd') as gen_date,serial_no,bill_type from TB_NO_GENERATE where id=#{id,jdbcType=BIGINT}
+	</select>
+	<select id="selectByBillType" parameterType="String" resultMap="BaseResultMap">
+		select id,to_char(sysdate,'yyyymmdd') as gen_date,serial_no,bill_type from TB_NO_GENERATE where bill_type=#{billType,jdbcType=VARCHAR} and gen_date=to_char(sysdate,'yyyymmdd',1,#{billType,jdbcType=VARCHAR}
+	</select>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="om.squirrel.dao.inventory.zone.IZoneDao">
+
+	<select id="findAll" resultType="com.squirrel.entity.invertory.zone.ZoneEntity">
+		SELECT id, version, status, code, name
+			, low_temperature, high_temperature, x_pos, y_pos, remarks
+			, creator, create_time, last_operator, update_time
+		FROM TB_ZONE
+	</select>
+	<insert id="doCreate" parameterType="com.squirrel.entity.invertory.zone.ZoneEntity">
+		INSERT INTO TB_ZONE
+		(name)
+		VALUES (#{name});
+	</insert>
+</mapper>

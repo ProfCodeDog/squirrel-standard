@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.squirrel.dao.worker.inorder.IInorderDao">
+	<resultMap id="BaseResultMap" type="com.squirrel.entity.work.inorder.InOrderEntity">
+		<id column="id" jdbcType="BIGINT" property="id" javaType="long" typeHandler="org.apache.ibatis.type.LongTypeHandler" />
+		<result column="version" jdbcType="INTEGER" property="version" javaType="int" typeHandler="org.apache.ibatis.type.IntegerTypeHandler" />
+		<result column="status" jdbcType="VARCHAR" property="status" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="company_code" jdbcType="VARCHAR" property="companyCode" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="code" jdbcType="VARCHAR" property="code" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="bill_type" jdbcType="VARCHAR" property="billType" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="company_bill_code" jdbcType="VARCHAR" property="companyBillCode" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="source_channel_code" jdbcType="VARCHAR" property="sourceChannelCode" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="bill_source_channel" jdbcType="VARCHAR" property="billSourceChannel" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="order_date" jdbcType="TIMESTAMP" property="orderDate" javaType="java.sql.Timestamp" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+		<result column="estimate_date" jdbcType="TIMESTAMP" property="estimateDate" javaType="java.sql.Timestamp" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+		<result column="start_received_date" jdbcType="TIMESTAMP" property="startReceivedDate" javaType="java.sql.Timestamp" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+		<result column="end_received_date" jdbcType="TIMESTAMP" property="endReceivedDate" javaType="java.sql.Timestamp" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+		<result column="ship_name" jdbcType="VARCHAR" property="shipName" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="ship_country" jdbcType="VARCHAR" property="shipCountry" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="ship_province" jdbcType="VARCHAR" property="shipProvince" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="ship_city" jdbcType="VARCHAR" property="shipCity" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="ship_area" jdbcType="VARCHAR" property="shipArea" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="ship_address" jdbcType="VARCHAR" property="shipAddress" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="ship_postcode" jdbcType="VARCHAR" property="shipPostcode" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="ship_telephone" jdbcType="VARCHAR" property="shipTelephone" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="ship_mobile" jdbcType="VARCHAR" property="shipMobile" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="ship_email" jdbcType="VARCHAR" property="shipEmail" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="remarks" jdbcType="VARCHAR" property="remarks" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="creator" jdbcType="VARCHAR" property="creator" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" javaType="java.sql.Timestamp" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+		<result column="last_operator" jdbcType="VARCHAR" property="lastOperator" javaType="String" typeHandler="org.apache.ibatis.type.StringTypeHandler" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" javaType="java.sql.Timestamp" typeHandler="org.apache.ibatis.type.SqlTimestampTypeHandler" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id,version,status,company_code,code,bill_type,company_bill_code,source_channel_code,bill_source_channel,order_date,estimate_date,start_received_date,end_received_date,
+		ship_name,ship_country,ship_province,ship_city,ship_area,ship_address,ship_postcode,ship_telephone,ship_mobile,ship_email,remarks,creator,create_time,last_operator,update_time
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from TB_INORDER where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="long"> delete from TB_INORDER where id=#{id,jdbcType=BIGINT} </delete>
+	<insert id="insert" parameterType="com.squirrel.entity.work.inorder.InOrderEntity"> insert into TB_INORDER (id,status,company_code,code,bill_type,company_bill_code,source_channel_code,
+		bill_source_channel,order_date,estimate_date,start_received_date,end_received_date,ship_name,ship_country,ship_province, ship_city,ship_area,
+		ship_address,ship_postcode,ship_telephone,ship_mobile,ship_email,remarks,creator,create_time,last_operator,update_time) values (SEQ_INORDER.nextval,
+		#{status,jdbcType=VARCHAR}, #{companyCode,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{billType,jdbcType=VARCHAR}, #{companyBillCode,jdbcType=VARCHAR},
+		#{sourceChannelCode,jdbcType=VARCHAR}, #{billSourceChannel,jdbcType=VARCHAR}, #{orderDate,jdbcType=TIMESTAMP}, #{estimateDate,jdbcType=TIMESTAMP},
+		#{startReceivedDate,jdbcType=TIMESTAMP}, #{endReceivedDate,jdbcType=TIMESTAMP}, #{shipName,jdbcType=VARCHAR}, #{shipCountry,jdbcType=VARCHAR},
+		#{shipProvince,jdbcType=VARCHAR}, #{shipCity,jdbcType=VARCHAR}, #{shipArea,jdbcType=VARCHAR},
+		#{shipAddress,jdbcType=VARCHAR},#{shipPostcode,jdbcType=VARCHAR}, #{shipTelephone,jdbcType=VARCHAR}, #{shipMobile,jdbcType=VARCHAR},
+		#{shipEmail,jdbcType=VARCHAR},#{remarks,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR},sysdate, #{lastOperator,jdbcType=VARCHAR},sysdate)
+	</insert>
+	<insert id="insertSelective" parameterType="com.squirrel.entity.work.inorder.InOrderEntity">
+		insert into TB_INORDER
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			ID,
+			<if test="status != null">status,</if>
+			<if test="companyCode != null">company_code,</if>
+			<if test="code != null">code,</if>
+			<if test="billType != null"> bill_type,</if>
+			<if test="companyBillCode != null">company_bill_code,</if>
+			<if test="sourceChannelCode != null">source_channel_code,</if>
+			<if test="billSourceChannel != null">bill_source_channel,</if>
+			<if test="orderDate != null">order_date,</if>
+			<if test="estimateDate != null">estimate_date,</if>
+			<if test="startReceivedDate != null">start_received_date,</if>
+			<if test="endReceivedDate != null">end_received_date,</if>
+			<if test="shipName != null">ship_name,</if>
+			<if test="shipCountry != null">ship_country,</if>
+			<if test="shipProvince != null">ship_province,</if>
+			<if test="shipCity != null">ship_city,</if>
+			<if test="shipArea != null">ship_area,</if>
+			<if test="shipAddress != null">ship_address,</if>
+			<if test="shipPostcode != null">ship_postcode,</if>
+			<if test="shipTelephone != null">ship_telephone,</if>
+			<if test="shipMobile != null">ship_mobile,</if>
+			<if test="shipEmail != null">ship_email,</if>
+			<if test="remarks != null">remarks,</if>
+			<if test="creator != null">creator,</if>
+			create_time,
+			<if test="lastOperator != null"> last_operator,</if>
+			update_time
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			SEQ_INORDER.nextval,
+			<if test="status != null">#{status,jdbcType=VARCHAR},</if>
+			<if test="companyCode != null">#{companyCode,jdbcType=VARCHAR},</if>
+			<if test="code != null">#{code,jdbcType=VARCHAR},</if>
+			<if test="billType != null">#{billType,jdbcType=VARCHAR},</if>
+			<if test="companyBillCode != null">#{companyBillCode,jdbcType=VARCHAR},</if>
+			<if test="sourceChannelCode != null">#{sourceChannelCode,jdbcType=VARCHAR},</if>
+			<if test="billSourceChannel != null">#{billSourceChannel,jdbcType=VARCHAR},</if>
+			<if test="orderDate != null">#{orderDate,jdbcType=TIMESTAMP},</if>
+			<if test="estimateDate != null">#{estimateDate,jdbcType=TIMESTAMP},</if>
+			<if test="startReceivedDate != null">#{startReceivedDate,jdbcType=TIMESTAMP},</if>
+			<if test="endReceivedDate != null">#{endReceivedDate,jdbcType=TIMESTAMP},</if>
+			<if test="shipName != null">#{shipName,jdbcType=VARCHAR},</if>
+			<if test="shipCountry != null">#{shipCountry,jdbcType=VARCHAR},</if>
+			<if test="shipProvince != null">#{shipProvince,jdbcType=VARCHAR},</if>
+			<if test="shipCity != null">#{shipCity,jdbcType=VARCHAR},</if>
+			<if test="shipArea != null">#{shipArea,jdbcType=VARCHAR},</if>
+			<if test="shipAddress != null">#{shipAddress,jdbcType=VARCHAR},</if>
+			<if test="shipPostcode != null">#{shipPostcode,jdbcType=VARCHAR},</if>
+			<if test="shipTelephone != null">#{shipTelephone,jdbcType=VARCHAR},</if>
+			<if test="shipMobile != null">#{shipMobile,jdbcType=VARCHAR},</if>
+			<if test="shipEmail != null">#{shipEmail,jdbcType=VARCHAR},</if>
+			<if test="remarks != null">#{remarks,jdbcType=VARCHAR},</if>
+			<if test="creator != null">#{creator,jdbcType=VARCHAR},</if>
+			SYSDATE,
+			<if test="lastOperator != null"> #{lastOperator,jdbcType=VARCHAR},</if>
+			SYSDATE
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.squirrel.entity.work.inorder.InOrderEntity">
+		update TB_INORDER
+		<set>
+			version=version+1,
+			<if test="status != null">status=#{status,jdbcType=VARCHAR},</if>
+			<if test="companyCode != null">company_code=#{companyCode,jdbcType=VARCHAR},</if>
+			<if test="billType != null"> bill_type=#{billType,jdbcType=VARCHAR},</if>
+			<if test="companyBillCode != null">company_bill_code=#{companyBillCode,jdbcType=VARCHAR},</if>
+			<if test="sourceChannelCode != null">source_channel_code=#{sourceChannelCode,jdbcType=VARCHAR},</if>
+			<if test="billSourceChannel != null">bill_source_channel=#{billSourceChannel,jdbcType=VARCHAR},</if>
+			<if test="orderDate != null">order_date=#{orderDate,jdbcType=TIMESTAMP},</if>
+			<if test="estimateDate != null">estimate_date=#{estimateDate,jdbcType=TIMESTAMP},</if>
+			<if test="startReceivedDate != null">start_received_date=#{startReceivedDate,jdbcType=TIMESTAMP},</if>
+			<if test="endReceivedDate != null">end_received_date=#{endReceivedDate,jdbcType=TIMESTAMP},</if>
+			<if test="shipName != null">ship_name=#{shipName,jdbcType=VARCHAR},</if>
+			<if test="shipCountry != null">ship_country=#{shipCountry,jdbcType=VARCHAR},</if>
+			<if test="shipProvince != null">ship_province=#{shipProvince,jdbcType=VARCHAR},</if>
+			<if test="shipCity != null">ship_city=#{shipCity,jdbcType=VARCHAR},</if>
+			<if test="shipArea != null">ship_area=#{shipArea,jdbcType=VARCHAR},</if>
+			<if test="shipAddress != null">ship_address=#{shipAddress,jdbcType=VARCHAR},</if>
+			<if test="shipPostcode != null">ship_postcode=#{shipPostcode,jdbcType=VARCHAR},</if>
+			<if test="shipTelephone != null">ship_telephone=#{shipTelephone,jdbcType=VARCHAR},</if>
+			<if test="shipMobile != null">ship_mobile=#{shipMobile,jdbcType=VARCHAR},</if>
+			<if test="shipEmail != null">ship_email=#{shipEmail,jdbcType=VARCHAR},</if>
+			<if test="remarks != null">remarks=#{remarks,jdbcType=VARCHAR},</if>
+			<if test="lastOperator != null">last_operator=#{lastOperator,jdbcType=VARCHAR},</if>
+			update_time=sysdate
+		</set>
+		where id = #{id,jdbcType=BIGINT} and version=#{version,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.squirrel.entity.work.inorder.InOrderEntity">
+		update TB_INORDER set
+		version=version+1,status=#{status,jdbcType=VARCHAR},company_code=#{companyCode,jdbcType=VARCHAR},bill_type=#{billType,jdbcType=VARCHAR},
+		company_bill_code=#{companyBillCode,jdbcType=VARCHAR},source_channel_code=#{sourceChannelCode,jdbcType=VARCHAR},bill_source_channel=#{billSourceChannel,jdbcType=VARCHAR},
+		order_date=#{orderDate,jdbcType=TIMESTAMP},estimate_date=#{estimateDate,jdbcType=TIMESTAMP},start_received_date=#{startReceivedDate,jdbcType=TIMESTAMP},
+		end_received_date=#{endReceivedDate,jdbcType=TIMESTAMP},ship_name=#{shipName,jdbcType=VARCHAR},ship_country=#{shipCountry,jdbcType=VARCHAR},
+		ship_province=#{shipProvince,jdbcType=VARCHAR},ship_city=#{shipCity,jdbcType=VARCHAR},ship_area=#{shipArea,jdbcType=VARCHAR},ship_address=#{shipAddress,jdbcType=VARCHAR},
+		ship_postcode=#{shipPostcode,jdbcType=VARCHAR},ship_telephone=#{shipTelephone,jdbcType=VARCHAR},ship_mobile=#{shipMobile,jdbcType=VARCHAR},
+		ship_email=#{shipEmail,jdbcType=VARCHAR},remarks=#{remarks,jdbcType=VARCHAR},LAST_OPERATOR=#{lastOperator,jdbcType=VARCHAR},update_time=sysdate
+		where
+		id=#{id,jdbcType=BIGINT} and version=#{version,jdbcType=INTEGER}
+	</update>
+</mapper>
