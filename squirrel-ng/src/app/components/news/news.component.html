@@ -1,0 +1,14 @@
+<p>
+  news works!
+</p>
+<button (click)="requestData()">请求数据</button>
+<br>
+<button (click)="requestJsonpData()">请求数据-JSONP</button>
+<br>
+<button (click)="postData()">请求数据-post</button>
+<br>
+<ul>
+  <li *ngFor="let item of list;">
+    {{item.title}}
+  </li>
+</ul>
