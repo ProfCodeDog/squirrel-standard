@@ -101,6 +101,7 @@
 	<modules>
 		<module>squirrel-base</module>
 		<module>squirrel-web</module>
+		<module>squirrel-user</module>
 		<module>squirrel-server</module>
 	</modules>
 </project>
