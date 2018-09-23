@@ -40,18 +40,18 @@ public class NoGenerateServiceImpl implements INoGenerateService {
 			tryNum++;
 			if (tryNum > 10) {
 				/* 没有获取到单号抛出异常 */
-				throw new BaseException("code", "获取单号失败:", envm.getKey(), envm.getValue());
+				throw new BaseException("code", "获取单号失败:", envm.name(), envm.getValue());
 			}
-			entity = this.noGenerateDao.selectByBillType(envm.getKey());
+			entity = this.noGenerateDao.selectByBillType(envm.name());
 			if (null == entity) {
 				/* 没有找到对应的数据则插入一条数据 (每天只会插入一次) */
 				try {
-					this.noGenerateDao.insert(envm.getKey());
+					this.noGenerateDao.insert(envm.name());
 				} catch (Exception e) {
-					logger.warn("取号表插入数据失败!  {}:{}", envm.getValue(), envm.getKey());
+					logger.warn("取号表插入数据失败!  {}:{}", envm.getValue(), envm.name());
 				}
 				/* 删除前一天的数据 */
-				this.noGenerateDao.deleteYesterdayData(envm.getKey());
+				this.noGenerateDao.deleteYesterdayData(envm.name());
 			} else {
 				/* 找到了则修改数据 */
 				int count = this.noGenerateDao.updateByPrimaryKey(entity);
