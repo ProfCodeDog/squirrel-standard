@@ -1,37 +1,55 @@
-package com.squirrel.controller.inventory.zone;
+package com.squirrel.controller.login;
 
-import javax.annotation.Resource;
-
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.squirrel.service.inventory.zone.IZoneService;
-
 /**
- * @Description:
+ * @Description:登陆
  *
  * @author machine
- * @date 2017年12月27日 下午7:03:46
+ * @date 2017年08月12日
  */
-@RestController
-@RequestMapping("/squirrel/inventory/zone")
-public class ZoneController {
+@Controller
+@RequestMapping("/")
+public class LoginController {
 
-	@Resource(name="zoneService")
-	IZoneService zoneService;
 
 	/**
 	 * @Description: list
 	 *
 	 * @author machine
-	 * @date 2017年12月18日 上午12:13:29
+	 * @date 2017年08月18日
 	 */
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	@ResponseBody
-	public Object list() {
-		return this.zoneService.list();
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index() {
+		return "/index";
 	}
+
+	/**
+	 * @Description: list
+	 *
+	 * @author machine
+	 * @date 2017年08月18日
+	 */
+	@RequestMapping(value = "/login/", method = RequestMethod.GET)
+	public String login() {
+		return "/login";
+	}
+
+	/**
+	 * @Description: list
+	 *
+	 * @author machine
+	 * @date 2017年08月18日
+	 */
+	@RequestMapping(value = "/loginVerify/", method = RequestMethod.GET)
+	public String loginVerify() {
+		return "/login";
+	}
+
+
 
 }
